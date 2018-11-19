@@ -318,14 +318,13 @@ Adds new parsers for custom file extensions
 
 Adds a new custom format.
 
-### config.addFormats(formatsObject)
+### convict.addFormats(formatsObject)
 
 Adds new custom formats.
 
 ```javascript
 convict.addFormats({
-  {
-    name: 'float-percent',
+  'float-percent': {
     validate: function(val) {
       if (val !== 0 && (!val || val > 1 || val < 0)) {
         throw new Error('must be a float between 0 and 1, inclusive');
@@ -335,11 +334,10 @@ convict.addFormats({
       return parseFloat(val, 10);
     }
   },
-  {
-    name: 'hex-string',
+  'hex-string': {
     validate: function(val) {
       if (/^[0-9a-fA-F]+$/.test(val)) {
-        throw new Error('must be a hexidecimal string');
+        throw new Error('must be a hexadecimal string');
       }
     }
   }
